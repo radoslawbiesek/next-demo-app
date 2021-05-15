@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import styles from "./Header.module.css";
 
 const ITEMS = [
@@ -31,7 +33,9 @@ const Header = () => (
       <ul className={styles.list}>
         {ITEMS.map((item) => (
           <li className={styles.item} key={item.href}>
-            <a href={item.href}>{item.label}</a>
+            <Link href={item.href}>
+              <a>{item.label}</a>
+            </Link>
           </li>
         ))}
       </ul>

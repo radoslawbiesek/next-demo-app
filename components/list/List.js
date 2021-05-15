@@ -16,7 +16,7 @@ const List = () => {
   }, []);
 
   const byName = (item) =>
-    item.original_name.toLowerCase().includes(search.toLowerCase());
+    item.name.toLowerCase().includes(search.toLowerCase());
 
   return (
     <div className={styles.wrapper}>
@@ -35,10 +35,12 @@ const List = () => {
               .slice(ITEMS_PER_PAGE * (page - 1), ITEMS_PER_PAGE * page)
               .map((item) => (
                 <li className={styles.item} key={item.id}>
-                  <img
-                    src={"https://image.tmdb.org/t/p/w200" + item.poster_path}
-                  />
-                  <span>{item.original_name}</span>
+                  <a href={"/series/" + item.id}>
+                    <img
+                      src={"https://image.tmdb.org/t/p/w200" + item.poster_path}
+                    />
+                    <span>{item.name} ({item.first_air_date.slice(0, 4)})</span>
+                  </a>
                 </li>
               ))}
           </ul>

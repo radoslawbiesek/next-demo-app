@@ -3,6 +3,10 @@ import styles from "./Header.module.css";
 const ITEMS = [
   {
     href: "/",
+    label: "Home",
+  },
+  {
+    href: "/series",
     label: "Browse",
   },
   {

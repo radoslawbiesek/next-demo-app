@@ -1,0 +1,34 @@
+.details {
+  display: flex;
+}
+
+.info {
+  padding: 0 20px;
+  font-size: 1.4em;
+  max-width: 600px;
+}
+
+.title {
+    line-height: 1;
+    margin-top: 0;
+}
+
+.title span {
+    font-size: .75em;
+    font-weight: normal;
+}
+
+.votes img {
+  height: 1em;
+  margin-right: 10px;
+}
+
+.votes .avg {
+  font-size: 1.2em;
+}
+
+.votes .count {
+  margin-left: 10px;
+  opacity: 0.8;
+  font-size: 0.8em;
+}

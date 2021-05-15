@@ -1,8 +1,5 @@
-import Header from "../components/header/Header"
-import List from "../components/list/List";
+import Hero from "../components/hero/Hero";
 
-const home = () => {
-    return ( <List />);
-}
+const index = () => <Hero />
  
-export default home;
+export default index;

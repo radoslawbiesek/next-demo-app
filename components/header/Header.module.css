@@ -1,0 +1,30 @@
+.header {
+  height: 100px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header h1 {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+}
+
+.header img {
+  height: 1em;
+  margin-right: 10px;
+}
+
+.list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.item {
+  margin-left: 30px;
+}
+

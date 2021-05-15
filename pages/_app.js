@@ -1,6 +1,6 @@
 import Layout from "../components/layout/Layout";
 
-import './index.css';
+import '../styles/global.css';
 
 const app = ({ Component, pageProps }) => (
   <Layout>

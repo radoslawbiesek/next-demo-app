@@ -2,23 +2,25 @@ import { useState, useEffect } from "react";
 
 import styles from "./Details.module.css";
 
-import mockedData from "../../data/mockedData.json";
-
 const Details = ({ id }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    setData(mockedData.find((item) => +item.id === +id));
+    if (id) {
+      fetch("/api/series/" + id)
+        .then((res) => res.json())
+        .then(setData)
+        .catch(console.error)
+    }
   }, [id]);
-
-  console.log(data);
 
   return data ? (
     <div className={styles.details}>
       <img src={"https://image.tmdb.org/t/p/w300" + data.poster_path} />
       <div className={styles.info}>
-        <h1 className={styles.title}>{data.name}
-            <span> ({data.first_air_date.slice(0, 4)})</span>
+        <h1 className={styles.title}>
+          {data.name}
+          <span> ({data.first_air_date?.slice(0, 4)})</span>
         </h1>
         <div className={styles.votes}>
           <img src="/star-solid.svg" />
@@ -29,7 +31,7 @@ const Details = ({ id }) => {
       </div>
     </div>
   ) : (
-    <p>Invalid id</p>
+    <p>Not found</p>
   );
 };
 

@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 
 import styles from "./List.module.css";
 
-import mockedData from "../../data/mockedData.json";
-
 const ITEMS_PER_PAGE = 10;
 
 const List = () => {
@@ -12,7 +10,9 @@ const List = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    setData(mockedData);
+    fetch("/api/series")
+      .then((res) => res.json())
+      .then(setData);
   }, []);
 
   const byName = (item) =>
@@ -39,7 +39,9 @@ const List = () => {
                     <img
                       src={"https://image.tmdb.org/t/p/w200" + item.poster_path}
                     />
-                    <span>{item.name} ({item.first_air_date.slice(0, 4)})</span>
+                    <span>
+                      {item.name} ({item.first_air_date.slice(0, 4)})
+                    </span>
                   </a>
                 </li>
               ))}

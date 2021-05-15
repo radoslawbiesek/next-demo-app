@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import styles from "./Header.module.scss";
 
 const ITEMS = [
@@ -20,12 +18,12 @@ const ITEMS = [
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Link href="/">
+      <a href="/">
         <h1>
           <img src="/tv-solid.svg" />
           <span>TV Series</span>
         </h1>
-      </Link>
+      </a>
       <nav>
         <ul>
           {ITEMS.map((item) => (

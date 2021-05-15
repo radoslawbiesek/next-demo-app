@@ -4,16 +4,9 @@ import styles from "./List.module.css";
 
 const ITEMS_PER_PAGE = 10;
 
-const List = () => {
-  const [data, setData] = useState([]);
+const List = ({ data }) => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    fetch("/api/series")
-      .then((res) => res.json())
-      .then(setData);
-  }, []);
 
   const byName = (item) =>
     item.name.toLowerCase().includes(search.toLowerCase());

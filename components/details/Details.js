@@ -9,10 +9,6 @@ const Details = ({ data }) => {
     return <p>Loading...</p>;
   }
 
-  if (data.error) {
-    return <p>{data.error}</p>;
-  }
-
   return data ? (
     <div className={styles.details}>
       <img src={"https://image.tmdb.org/t/p/w300" + data.poster_path} />

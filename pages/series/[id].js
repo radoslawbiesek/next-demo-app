@@ -31,6 +31,12 @@ export async function getStaticProps(context) {
 
   const data = mockedData.find((item) => +item.id === +id);
 
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+  
   return {
     props: {
       data,

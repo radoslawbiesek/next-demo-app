@@ -16,8 +16,8 @@ const ITEMS = [
     label: "News",
   },
   {
-    href: "/help-center",
-    label: "Help Center",
+    href: "/help",
+    label: "Help",
   },
 ];
 

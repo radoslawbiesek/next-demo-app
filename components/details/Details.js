@@ -1,8 +1,18 @@
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import styles from "./Details.module.css";
 
 const Details = ({ data }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <p>Loading...</p>;
+  }
+
+  if (data.error) {
+    return <p>{data.error}</p>;
+  }
+
   return data ? (
     <div className={styles.details}>
       <img src={"https://image.tmdb.org/t/p/w300" + data.poster_path} />

@@ -10,11 +10,13 @@ export async function getStaticPaths() {
   const res = await fetch("http://localhost:3000/api/series");
   const data = await res.json();
 
-  const paths = data.map((item) => ({ params: { id: item.id.toString() } }));
+  const paths = data
+    .map((item) => ({ params: { id: item.id.toString() } }))
+    .slice(0, 5);
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -23,7 +25,7 @@ export async function getStaticProps(context) {
 
   const res = await fetch("http://localhost:3000/api/series/" + id);
   const data = await res.json();
-
+  
   return {
     props: {
       data,

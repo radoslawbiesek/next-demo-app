@@ -2,18 +2,7 @@ import { useState, useEffect } from "react";
 
 import styles from "./Details.module.css";
 
-const Details = ({ id }) => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    if (id) {
-      fetch("/api/series/" + id)
-        .then((res) => res.json())
-        .then(setData)
-        .catch(console.error)
-    }
-  }, [id]);
-
+const Details = ({ data }) => {
   return data ? (
     <div className={styles.details}>
       <img src={"https://image.tmdb.org/t/p/w300" + data.poster_path} />

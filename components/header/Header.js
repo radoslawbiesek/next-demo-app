@@ -23,12 +23,14 @@ const ITEMS = [
 
 const Header = () => (
   <header className={styles.header}>
-    <a href="/">
-      <h1>
-        <img src="/tv-solid.svg" />
-        <span>TV Series</span>
-      </h1>
-    </a>
+    <Link href="/">
+      <a>
+        <h1>
+          <img src="/tv-solid.svg" />
+          <span>TV Series</span>
+        </h1>
+      </a>
+    </Link>
     <nav>
       <ul className={styles.list}>
         {ITEMS.map((item) => (

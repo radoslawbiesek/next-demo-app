@@ -1,23 +1,6 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-
 import styles from "./Details.module.css";
 
-const Details = () => {
-  const router = useRouter();
-  const id = router.query.id;
-
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    if (id) {
-      fetch("http://localhost:3000/api/series/" + router.query.id)
-        .then((res) => res.json())
-        .then(setData)
-        .catch(console.error);
-    }
-  }, [id]);
-
+const Details = ({ data }) => {
   return data ? (
     <div className={styles.details}>
       <img src={"https://image.tmdb.org/t/p/w300" + data.poster_path} />

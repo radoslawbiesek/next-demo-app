@@ -7,20 +7,9 @@ import styles from "./List.module.css";
 
 const ITEMS_PER_PAGE = 10;
 
-const List = () => {
+const List = ({ data }) => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    // do whatever you would normally do in react
-    
-    fetch("http://localhost:3000/api/series")
-      .then((res) => res.json())
-      .then(setData)
-      .catch(console.error);
-  }, []);
 
   const byName = (item) =>
     item.name.toLowerCase().includes(search.toLowerCase());

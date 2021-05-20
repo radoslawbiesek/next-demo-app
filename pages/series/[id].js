@@ -7,14 +7,24 @@ const details = ({ data }) => {
 
 export default details;
 
-export async function getServerSideProps(context) {
-  const data = getById(context.query.id);
+export async function getStaticPaths() {
+  const data = getAll();
+  const paths = data
+    .map((item) => ({ params: { id: item.id.toString() } }))
+    .slice(0, 5);
+
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context) {
+  const data = getById(context.params.id);
 
   if (!data) {
     return {
-      redirect: {
-        destination: '/series'
-      }
+      notFound: true,
     };
   }
 

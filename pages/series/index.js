@@ -7,7 +7,7 @@ const series = ({ data }) => {
 
 export default series;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // DO: call an external API, query db, read file system
   // DONT: call your own api from your pages directory
 

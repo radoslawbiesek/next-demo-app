@@ -11,22 +11,15 @@ export async function getStaticPaths() {
   const data = getAll();
   const paths = data
     .map((item) => ({ params: { id: item.id.toString() } }))
-    .slice(0, 5);
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
 export async function getStaticProps(context) {
   const data = getById(context.params.id);
-
-  if (!data) {
-    return {
-      notFound: true,
-    };
-  }
 
   return {
     props: {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Pagination from "../pagination/Pagination";
 
 import styles from "./List.module.css";
 
@@ -39,19 +40,12 @@ const List = ({ data }) => {
                 </li>
               ))}
           </ul>
-          <ul className={styles.pagination}>
-            {Array(Math.ceil(data.filter(byName).length / ITEMS_PER_PAGE))
-              .fill(null)
-              .map((_, index) => (
-                <li
-                  key={index}
-                  onClick={() => setPage(index + 1)}
-                  className={index + 1 === page ? styles.active : ""}
-                >
-                  {index + 1}
-                </li>
-              ))}
-          </ul>
+          <Pagination
+            page={page}
+            setPage={setPage}
+            total={data.filter(byName).length}
+            perPage={ITEMS_PER_PAGE}
+          />
         </>
       ) : (
         <p className={styles.empty}>No results found</p>

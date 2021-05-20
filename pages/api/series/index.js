@@ -1,7 +1,8 @@
-import mockedData from "../../../data/mockedData.json";
+import { getAll } from "../../../fakeDb";
 
 export default function (req, res) {
+  const data = getAll();
   res
     .status(200)
-    .json(mockedData);
+    .json(data);
 }

@@ -1,0 +1,14 @@
+.pagination {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .pagination li {
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 1.5em;
+  }
+  
+  .active {
+    font-weight: bold;
+  }

@@ -1,7 +1,7 @@
-import mockedData from "../../../data/mockedData.json";
+import { getById } from "../../../fakeDb";
 
 export default function (req, res) {
-  const item = mockedData.find((item) => +item.id === +req.query.id);
+  const item = getById(req.query.id);
   if (item) {
     res.status(200).json(item);
   } else {

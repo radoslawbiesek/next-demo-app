@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { useState } from "react";
+
 import Pagination from "../pagination/Pagination";
 
 import styles from "./List.module.css";
@@ -17,7 +19,10 @@ const List = ({ data }) => {
       {data.length ? (
         <input
           className={styles.search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setPage(1);
+            setSearch(e.target.value);
+          }}
           placeholder="Type to search"
         />
       ) : null}
@@ -29,14 +34,18 @@ const List = ({ data }) => {
               .slice(ITEMS_PER_PAGE * (page - 1), ITEMS_PER_PAGE * page)
               .map((item) => (
                 <li className={styles.item} key={item.id}>
-                  <a href={"/series/" + item.id}>
-                    <img
-                      src={"https://image.tmdb.org/t/p/w200" + item.poster_path}
-                    />
-                    <span>
-                      {item.name} ({item.first_air_date.slice(0, 4)})
-                    </span>
-                  </a>
+                  <Link href={"/series/" + item.id}>
+                    <a>
+                      <img
+                        src={
+                          "https://image.tmdb.org/t/p/w200" + item.poster_path
+                        }
+                      />
+                      <span>
+                        {item.name} ({item.first_air_date.slice(0, 4)})
+                      </span>
+                    </a>
+                  </Link>
                 </li>
               ))}
           </ul>
@@ -48,7 +57,7 @@ const List = ({ data }) => {
           />
         </>
       ) : (
-        <p className={styles.empty}>No results found</p>
+        <p className={styles.empty}>{search ? 'No results found' : 'Loading...'}</p>
       )}
     </div>
   );

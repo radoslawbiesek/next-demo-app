@@ -5,6 +5,6 @@ export default function (req, res) {
   if (item) {
     res.status(200).json(item);
   } else {
-    res.status(404).json({ error: "Invalid id" });
+    res.status(404).json({ error: "Not found" });
   }
 }

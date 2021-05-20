@@ -1,13 +1,22 @@
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 import styles from "./Details.module.css";
 
-const Details = ({ data }) => {
+const Details = () => {
   const router = useRouter();
+  const id = router.query.id;
 
-  if (router.isFallback) {
-    return <p>Loading...</p>;
-  }
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (id) {
+      fetch("http://localhost:3000/api/series/" + router.query.id)
+        .then((res) => res.json())
+        .then(setData)
+        .catch(console.error);
+    }
+  }, [id]);
 
   return data ? (
     <div className={styles.details}>
@@ -26,7 +35,7 @@ const Details = ({ data }) => {
       </div>
     </div>
   ) : (
-    <p>Not found</p>
+    <p>Loading...</p>
   );
 };
 
